@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Obligatorio2.Models;
 
 namespace Obligatorio2.Controllers
 {
@@ -10,12 +11,15 @@ namespace Obligatorio2.Controllers
     {
         public ActionResult Index()
         {
+            ManagementContext db = new ManagementContext();
             return View();
         }
 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
+
+            
 
             return View();
         }

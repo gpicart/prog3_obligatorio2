@@ -7,6 +7,7 @@ using System.Web;
 
 namespace Obligatorio2.Models
 {
+    
     public class Requester
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -22,6 +23,10 @@ namespace Obligatorio2.Models
         public string Email { get; set; }
         [Required(ErrorMessage = "Debe ingresar el teléfono del solicitante.")]
         public int phone { get; set; }
+        
+        public Requester()
+        {
 
+        }
     }
 }

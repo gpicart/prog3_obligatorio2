@@ -7,6 +7,7 @@ using System.Web;
 
 namespace Obligatorio2.Models
 {
+    
     public class Case
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -15,5 +16,10 @@ namespace Obligatorio2.Models
         public virtual AppProcedure Procedure { get; set; }
         public string OfficialEmail { get; set; }
         public DateTime createdTime { get; set; }
+
+        public Case()
+        {
+
+        }
     }
 }
