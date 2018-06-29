@@ -72,11 +72,32 @@ namespace Obligatorio2.Controllers
             {
                 return View(model);
             }
-
+            ApplicationDbContext db = new ApplicationDbContext();
+            try
+            {
+                var idUser = (from u in db.AppUser
+                              where u.Email == model.Email
+                              select u.Id).First();
+                if (idUser != 0)
+                {
+                    Session["idUser"] = idUser;
+                    return RedirectToLocal(returnUrl);
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Invalid login attempt.");
+                    return View(model);
+                }
+            }
+            catch
+            {
+                ModelState.AddModelError("", "Catch error in login.");
+                return View(model);
+            }
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
+            //var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            /*switch (result)
             {
                 case SignInStatus.Success:
                     return RedirectToLocal(returnUrl);
@@ -88,7 +109,7 @@ namespace Obligatorio2.Controllers
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
-            }
+            }*/
         }
 
         //

@@ -21,7 +21,7 @@ namespace Obligatorio2.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("MyConn", throwIfV1Schema: false)
         {
         }
 
@@ -29,5 +29,7 @@ namespace Obligatorio2.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Obligatorio2.Models.AppUser> AppUser { get; set; }
     }
 }
