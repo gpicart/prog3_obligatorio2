@@ -1,0 +1,5 @@
+1 @ COD123 @ Esta es la descripción para la etapa COD123 del trámite 1 @ 7
+1 @ COD124 @ Esta es la descripción para la segunda etapa COD124 del trámite 1 @ 4
+2 @ ROF901 @ Esta es la descripción para la etapa ROF901 del trámite 2 @ 10
+2 @ ROF903 @ Esta es la descripción para la segunda etapa ROF903 del trámite 2 @ 4
+9 @ 5 @ asda @ 9999

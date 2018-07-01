@@ -10,14 +10,15 @@ namespace Obligatorio2.Models
     
     public class Stage
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Id { get; set; }
         public int MaxDays { get; set; }
         public string Description { get; set; }
         public string Code { get; set; }
-        public bool Completed { get; set; }
+        public bool? Completed { get; set; }
         public string documentName { get; set; }
-        public DateTime completedDate { get; set; }
+        public DateTime? completedDate { get; set; }
         
         public Stage()
         {

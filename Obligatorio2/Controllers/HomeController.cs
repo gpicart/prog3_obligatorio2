@@ -24,6 +24,13 @@ namespace Obligatorio2.Controllers
             return View();
         }
 
+        public ActionResult DBUpdated()
+        {
+            ViewBag.Message = "Se han cargado los datos.";
+
+            return View();
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

@@ -16,8 +16,8 @@ namespace Obligatorio2.Models
         public string Description { get; set; }
         public int Cost { get; set; }
         public int Days { get; set; }
-        public virtual List<AppGroup> Groups { get; set; }
-        public virtual List<Stage> Stages { get; set; }
+        public virtual List<AppGroup> Groups { get; set; } = new List<AppGroup>();
+        public virtual List<Stage> Stages { get; set; } = new List<Stage>();
 
         public AppProcedure()
         {
