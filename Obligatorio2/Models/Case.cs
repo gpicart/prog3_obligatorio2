@@ -15,7 +15,11 @@ namespace Obligatorio2.Models
         public int Id { get; set; }
         public virtual AppProcedure Procedure { get; set; }
         public string OfficialEmail { get; set; }
-        public DateTime createdTime { get; set; }
+        public DateTime CreatedTime { get; set; }
+
+        public virtual Requester Requester { get; set; }
+
+        public bool Closed { get; set; }
 
         public Case()
         {

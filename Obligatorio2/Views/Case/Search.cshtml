@@ -1,0 +1,115 @@
+﻿@model IEnumerable<Obligatorio2.Models.Case>
+
+@{
+    ViewBag.Title = "BuscarComentario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Buscar expedientes</h2>
+
+<div class="form-group">
+
+    @using (Html.BeginForm("Search", "Case"))
+    {
+
+        <div style="margin-top: 30px;" class="container">
+
+            <div class="row">
+
+                <div class="col-sm-3">
+                    <input type="radio" name="filterOption" id="ciFilter" value="ciFilter" />
+                    <label for="ciFilter">Por cédula</label>
+                </div>
+
+                <div class="col-sm-3">
+                    <input type="radio" name="filterOption" id="numberFilter" value="numberFilter" />
+                    <label for="numberFilter">Por número</label>
+                </div>
+
+                <div class="col-sm-3">
+                    <input type="radio" name="filterOption" id="byOfficial" value="byOfficial" />
+                    <label for="byOfficial">Por funcionario</label>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-sm-3">
+                    <input type="radio" name="filterOption" id="byFullfiled" value="byFullfiled" />
+                    <label for="byFullfiled">Por culminados</label>
+                </div>
+
+                <div class="col-sm-3">
+                    <input type="radio" name="filterOption" id="byNotFullfiled" value="byNotFullfiled" />
+                    <label for="byNotFullfiled">Por no culminados</label>
+                </div>
+
+                <div class="col-sm-3">
+                    <input type="radio" name="filterOption" id="all" value="" />
+                    <label for="all">Todos</label>
+                </div>
+
+            </div>
+
+            <div style="margin-top: 15px;" class="row">
+
+                <div class="col-sm-3">
+
+                    <input type="text" class="form-control" name="searchValue" />
+
+                </div>
+
+                <div class="col-sm-1">
+                    <button class="btn btn-primary" type="submit">Buscar </button>
+                </div>
+
+            </div>
+
+        </div>
+    }
+
+    <table style="margin-top: 30px;" class="table">
+
+        <thead>
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Título de Trámite</th>
+                <th scope="col">Nombre del Solicitante</th>
+                <th scope="col">Fecha de creación</th>
+                <th scope="col">Cerrado</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Procedure.Title)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Requester.FirstName + " " + item.Requester.LastName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedTime)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Closed)
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>
