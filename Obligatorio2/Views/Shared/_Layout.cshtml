@@ -22,8 +22,8 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Cargar archivos", "Index", "FileCreate")</li>
-                    <li>@Html.ActionLink("Buscar Expedientes", "Search", "Cases")</li>
-                    
+                    <li>@Html.ActionLink("Buscar expedientes", "Search", "Cases")</li>
+                    <li>@Html.ActionLink("Visualizar Etapas", "Index", "AppProcedure")</li>
                     if(Session["idUser"] != null){
                     <li>@Html.ActionLink("Nuevo expediente", "SearchRequester", "Cases")</li>
                     }

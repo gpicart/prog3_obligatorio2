@@ -1,0 +1,47 @@
+﻿@model Obligatorio2.ViewModels.AppProcedureViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Trámites</h2>
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <table class="table">
+
+                <thead>
+                    <tr>
+                        <th scope="col">Código</th>
+                        <th scope="col">Título</th>
+                        <th scope="col">Seleccionar</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var item in Model.Procedures)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Code)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                            <td>
+                                <a style="cursor: pointer;" onclick="location.href='@Url.Action("Index", "Stage", new { id = item.Code })'">Seleccionar</a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
