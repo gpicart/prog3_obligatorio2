@@ -1,0 +1,32 @@
+﻿@model List<Obligatorio2.ViewModels.StageViewModel>
+
+<h3>Etapas</h3>
+
+<table style="margin-top: 20px;" class="table">
+
+    <thead>
+        <tr>
+            <th scope="col">Código</th>
+            <th scope="col">Máximo de días</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Fecha completada</th>
+            <th scope="col">Imagen</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td> @Html.DisplayFor(modelItem => item.Stage.Code)</td>
+                <td> @Html.DisplayFor(modelItem => item.Stage.MaxDays)</td>
+                <td> @Html.DisplayFor(modelItem => item.Stage.Description)</td>
+                <td> @Html.DisplayFor(modelItem => item.Stage.completedDate)</td>
+                <td style="max-height: 180px; max-width: 180px;"> 
+                    <img src='@Url.Content("~/Content/docs/" + @item.Stage.documentName)'/>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

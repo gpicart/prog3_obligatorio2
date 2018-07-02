@@ -169,9 +169,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CasesController.cs" />
+    <Compile Include="Controllers\AppProcedureController.cs" />
     <Compile Include="Controllers\FileCreateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\StageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -187,13 +189,17 @@
     <Compile Include="Models\Stage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\AppProcedureViewModel.cs" />
+    <Compile Include="ViewModels\StageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Archivos\datosAsignaciones.txt" />
     <Content Include="App_Data\Archivos\datosEtapas.txt" />
-    <Content Include="App_Data\Archivos\datosTrámites.txt" />
+    <Content Include="App_Data\Archivos\datosTramites.txt" />
     <Content Include="App_Data\Archivos\todosLosGrupos.txt" />
     <Content Include="App_Data\Archivos\todosLosUsers.txt" />
+    <Content Include="Content\docs\lala.jpeg" />
+    <Content Include="Content\docs\pepe.jpeg" />
     <Content Include="Archivos\datosAsignaciones.txt" />
     <Content Include="Archivos\datosEtapas.txt" />
     <Content Include="Archivos\datosTrámites.txt" />
@@ -263,12 +269,12 @@
     <Content Include="Views\Cases\SearchRequester.cshtml" />
     <Content Include="Views\Cases\CreateCase.cshtml" />
     <Content Include="Views\Cases\RequesterCreate.cshtml" />
+    <Content Include="Views\AppProcedure\Index.cshtml" />
+    <Content Include="Views\Stage\Index.cshtml" />
     <Content Include="Views\Cases\Search.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Case\" />
-    <Folder Include="Views\FileCreate\" />
-  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
