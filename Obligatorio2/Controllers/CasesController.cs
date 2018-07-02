@@ -13,14 +13,7 @@ namespace Obligatorio2.Controllers
     public class CasesController : Controller
     {
         private ManagementContext db = new ManagementContext();
-        private AppUser user = new AppUser();
-
-        // GET: Cases
-        public ActionResult Index()
-        {
-            return View(db.Case.ToList());
-        }
-
+        
         // GET: Cases/Details/5
         public ActionResult Details(int? id)
         {
@@ -71,24 +64,62 @@ namespace Obligatorio2.Controllers
             var req = db.Requester.Find(id);
             SolicitanteDetailViewModel sol = new SolicitanteDetailViewModel();
             sol.requester = req;
-            sol.cases = new Case();
+            sol.RequesterId = req.Id;
+            sol.procedures = db.AppProcedure.ToList();
             return View(sol);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateCase([Bind(Include = "Email,Id")] SolicitanteDetailViewModel @solicitante)
+        public ActionResult CreateCase(SolicitanteDetailViewModel @solicitante)
         {
-           /* Case @case = new Case();
-            @case.OfficialEmail = @solicitante.Email;*/
-            return View();
+            if (!ModelState.IsValid)
+            {
+                return View(@solicitante);
+            }
+            ApplicationDbContext db = new ApplicationDbContext();
+            try
+            {
+                Case @case = new Case();
+                var id = Convert.ToInt32(Session["idUser"]);
+                var user = (from u in db.AppUser
+                            where u.Id == id
+                            select u).First();
+                @case.OfficialEmail = user.Email;
+                var req = (from r in db.Requester
+                           where r.Id == @solicitante.RequesterId
+                           select r).First();
+                @case.Requester = req;
+                @case.CreatedTime = DateTime.Now;
+
+                var procedure = (from t in db.Procedure
+                                 where t.Code == @solicitante.SelectedProcedure.ToString()
+                                 select t).First();
+
+                @case.Procedure = procedure;
+                db.Case.Add(@case);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Home");
+            }
+            catch
+            {
+                ModelState.AddModelError("", "Catch error in login.");
+                return View(@solicitante);
+            }
         }
 
 
         //GET:Cases/SearchRequester
         public ActionResult SearchRequester()
         {
-            return View();
+            if (Session["idUser"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         // POST: Cases/SearchRequester
@@ -204,6 +235,55 @@ namespace Obligatorio2.Controllers
             db.Case.Remove(@case);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        // GET: Case
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult Search(string searchValue, string filterOption)
+        {
+
+            if (!string.IsNullOrEmpty(searchValue))
+            {
+                searchValue = searchValue.Trim();
+            }
+
+            List<Case> returnList = new List<Case>();
+
+            switch (filterOption)
+            {
+                case "ciFilter":
+                    returnList = db.Case.Where(q => string.Equals(q.Requester.CI, searchValue)).ToList();
+                    break;
+                case "numberFilter":
+                    returnList.Add(db.Case.Find(Convert.ToInt32(searchValue)));
+                    break;
+                case "byOfficial":
+                    returnList = db.Case.Where(q => string.Equals(q.OfficialEmail, searchValue)).ToList();
+                    break;
+                case "byFullfiled":
+                    returnList = db.Case.Where(q => q.Closed == true).ToList();
+                    break;
+                case "byNotFullfiled":
+                    returnList = db.Case.Where(q => q.Closed == false).ToList();
+                    break;
+                default:
+                    returnList = db.Case.ToList();
+                    break;
+
+            }
+
+            if (returnList.Count() > 1)
+            {
+
+                returnList = returnList.OrderBy(q => q.Requester.CI).ThenByDescending(t => t.CreatedTime).ToList();
+
+            }
+
+            return View(returnList);
         }
 
         protected override void Dispose(bool disposing)
