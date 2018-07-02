@@ -16,12 +16,15 @@ namespace Obligatorio2.Models
         [Required(ErrorMessage = "Debe ingresar la cédula del solicitante.")]
         public string CI { get; set; }
         [Required(ErrorMessage = "Debe ingresar el nombre del solicitante.")]
+        [Display(Name = "Nombre")]
         public string FirstName { get; set; }
         [Required(ErrorMessage = "Debe ingresar el apellido del solicitante.")]
+        [Display(Name = "Apellido")]
         public string LastName { get; set; }
         [Required(ErrorMessage = "Debe ingresar el correo del solicitante.")]
         public string Email { get; set; }
         [Required(ErrorMessage = "Debe ingresar el teléfono del solicitante.")]
+        [Display(Name = "Telefono")]
         public int phone { get; set; }
         
         public Requester()

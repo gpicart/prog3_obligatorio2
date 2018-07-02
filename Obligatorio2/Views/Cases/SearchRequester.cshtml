@@ -1,11 +1,11 @@
 ﻿@model Obligatorio2.Models.SolicitanteViewModel
 
 @{
-    ViewBag.Title = "PreCreate";
+    ViewBag.Title = "Crear Expediente";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>PreCreate</h2>
+<h2>Crear Expediente</h2>
 
 
 
@@ -14,7 +14,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Case</h4>
+        <h4>Buscar Solicitante</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">

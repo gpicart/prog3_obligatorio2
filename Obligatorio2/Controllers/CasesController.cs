@@ -32,6 +32,10 @@ namespace Obligatorio2.Controllers
         //GET:Cases/RequesterCreate/5
         public ActionResult RequesterCreate(string CI)
         {
+            if (Session["idUser"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             Requester req = new Requester();
             req.CI = CI;
             return View(req);
@@ -57,6 +61,11 @@ namespace Obligatorio2.Controllers
         //GET:Cases/CreateCase/5
         public ActionResult CreateCase(int id)
         {
+            if (Session["idUser"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -99,7 +108,7 @@ namespace Obligatorio2.Controllers
                 @case.Procedure = procedure;
                 db.Case.Add(@case);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Search", "Cases");
             }
             catch
             {
@@ -240,11 +249,19 @@ namespace Obligatorio2.Controllers
         // GET: Case
         public ActionResult Index()
         {
+            if (Session["idUser"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             return View();
         }
 
         public ActionResult Search(string searchValue, string filterOption)
         {
+            if (Session["idUser"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
 
             if (!string.IsNullOrEmpty(searchValue))
             {

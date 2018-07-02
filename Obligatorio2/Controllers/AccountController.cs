@@ -80,7 +80,7 @@ namespace Obligatorio2.Controllers
                               select u.Id).First();
                 if (idUser != 0)
                 {
-                    System.Web.Security.FormsAuthentication.SetAuthCookie(idUser.ToString(), false);
+                    System.Web.Security.FormsAuthentication.SetAuthCookie(idUser.ToString(), true);
                     Session["idUser"] = idUser;
                     return RedirectToLocal(returnUrl);
                 }
@@ -114,6 +114,7 @@ namespace Obligatorio2.Controllers
         }
         public ActionResult Logout()
         {
+            Session["idUser"] = null;
             System.Web.Security.FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
