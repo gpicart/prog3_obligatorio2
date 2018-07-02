@@ -31,5 +31,6 @@ namespace Obligatorio2.Models
         }
 
         public System.Data.Entity.DbSet<Obligatorio2.Models.AppUser> AppUser { get; set; }
+        public System.Data.Entity.DbSet<Obligatorio2.Models.Requester> Requester { get; set; }
     }
 }

@@ -29,4 +29,9 @@ namespace Obligatorio2.Models
 
         }
     }
+
+    public class RequesterViewModel
+    {
+        public Requester requester { get; set; }
+    }
 }

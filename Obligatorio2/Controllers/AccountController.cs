@@ -80,6 +80,7 @@ namespace Obligatorio2.Controllers
                               select u.Id).First();
                 if (idUser != 0)
                 {
+                    System.Web.Security.FormsAuthentication.SetAuthCookie(idUser.ToString(), false);
                     Session["idUser"] = idUser;
                     return RedirectToLocal(returnUrl);
                 }
@@ -111,7 +112,11 @@ namespace Obligatorio2.Controllers
                     return View(model);
             }*/
         }
-
+        public ActionResult Logout()
+        {
+            System.Web.Security.FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
         //
         // GET: /Account/VerifyCode
         [AllowAnonymous]

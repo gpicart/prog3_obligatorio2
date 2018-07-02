@@ -22,4 +22,18 @@ namespace Obligatorio2.Models
 
         }
     }
+
+    public class SolicitanteViewModel
+    {
+        public string CI { get; set; }
+        public int Id { get; set; }
+    }
+
+    public class SolicitanteDetailViewModel
+    {
+        public Requester requester { get; set; }
+        public Case cases {get;set;}
+        
+    }
+
 }

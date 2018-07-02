@@ -1,0 +1,66 @@
+﻿@model Obligatorio2.Models.SolicitanteDetailViewModel
+@{
+    ViewBag.Title = "DatosUsuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DatosUsuario</h2>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+            <h4>Detalle </h4>
+            <hr />
+        <table class="table table-bordered table-responsive table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.requester.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.requester.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.requester.CI)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.requester.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.requester.phone)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.requester.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.requester.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.requester.CI)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.requester.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.requester.phone)
+                </td>
+            </tr>
+        </table>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Ingresar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
