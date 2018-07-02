@@ -55,14 +55,14 @@ namespace Obligatorio2.Controllers
             {
                 db.Requester.Add(@requester);
                 db.SaveChanges();
-                return RedirectToAction("DatosUsuario", new { id = requester.Id});
+                return RedirectToAction("CreateCase", new { id = requester.Id});
             }
 
             return View(@requester);
         }
 
-        //GET:Cases/DatosUsuario/5
-        public ActionResult DatosUsuario(int id)
+        //GET:Cases/CreateCase/5
+        public ActionResult CreateCase(int id)
         {
             if (id == 0)
             {
@@ -77,7 +77,7 @@ namespace Obligatorio2.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DatosUsuario([Bind(Include = "Email,Id")] SolicitanteDetailViewModel @solicitante)
+        public ActionResult CreateCase([Bind(Include = "Email,Id")] SolicitanteDetailViewModel @solicitante)
         {
            /* Case @case = new Case();
             @case.OfficialEmail = @solicitante.Email;*/
@@ -110,7 +110,7 @@ namespace Obligatorio2.Controllers
                 if (requester.Id != 0)
                 {
                     //ver detalle de requester
-                    return RedirectToAction("DatosUsuario", new { id = requester.Id});
+                    return RedirectToAction("CreateCase", new { id = requester.Id});
                 }
                 else
                 {
