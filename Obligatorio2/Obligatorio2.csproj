@@ -168,7 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CasesController.cs" />
+    <Compile Include="Controllers\CaseController.cs" />
     <Compile Include="Controllers\FileCreateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -255,16 +255,10 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Home\DBUpdated.cshtml" />
-    <Content Include="Views\Cases\Create.cshtml" />
-    <Content Include="Views\Cases\Delete.cshtml" />
-    <Content Include="Views\Cases\Details.cshtml" />
-    <Content Include="Views\Cases\Edit.cshtml" />
-    <Content Include="Views\Cases\Index.cshtml" />
-    <Content Include="Views\Cases\SearchRequester.cshtml" />
-    <Content Include="Views\Cases\DatosUsuario.cshtml" />
-    <Content Include="Views\Cases\RequesterCreate.cshtml" />
+    <Content Include="Views\Case\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\CaseFilter\" />
     <Folder Include="Views\FileCreate\" />
   </ItemGroup>
   <ItemGroup>
