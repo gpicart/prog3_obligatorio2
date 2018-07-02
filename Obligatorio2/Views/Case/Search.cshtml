@@ -74,8 +74,10 @@
         <thead>
             <tr>
                 <th scope="col">Código</th>
-                <th scope="col">Título de Trámite</th>
-                <th scope="col">Nombre del Solicitante</th>
+                <th scope="col">Título de trámite</th>
+                <th scope="col">Nombre del solicitante</th>
+                <th scope="col">Cédula del solicitante</th>
+                <th scope="col">Email del funcionario</th>
                 <th scope="col">Fecha de creación</th>
                 <th scope="col">Cerrado</th>
             </tr>
@@ -95,7 +97,15 @@
                     </td>
 
                     <td>
-                        @Html.DisplayFor(modelItem => item.Requester.FirstName + " " + item.Requester.LastName)
+                        @Html.DisplayFor(modelItem => item.Requester.FirstName) &nbsp; @Html.DisplayFor(modelItem => item.Requester.LastName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Requester.CI)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OfficialEmail)
                     </td>
 
                     <td>

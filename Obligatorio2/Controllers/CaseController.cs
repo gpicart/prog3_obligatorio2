@@ -21,11 +21,16 @@ namespace Obligatorio2.Controllers
         public ActionResult Search(string searchValue, string filterOption)
         {
 
+            if (!string.IsNullOrEmpty(searchValue))
+            {
+                searchValue = searchValue.Trim();
+            }
+
             List<Case> returnList = new List<Case>();
 
-            switch(filterOption)
+            switch (filterOption)
             {
-                case "ciFIlter":
+                case "ciFilter":
                     returnList = db.Case.Where(q => string.Equals(q.Requester.CI, searchValue)).ToList();
                     break;
                 case "numberFilter":
@@ -46,7 +51,12 @@ namespace Obligatorio2.Controllers
 
             }
 
-            returnList = returnList.OrderBy(q => q.Requester.CI).ThenByDescending(t => t.CreatedTime).ToList();
+            if (returnList.Count() > 1)
+            {
+
+                returnList = returnList.OrderBy(q => q.Requester.CI).ThenByDescending(t => t.CreatedTime).ToList();
+
+            }
 
             return View(returnList);
         }
