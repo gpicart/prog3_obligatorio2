@@ -24,5 +24,11 @@ namespace Obligatorio2.ViewModels
         public List<AppUser> users { get; set; }
         public int userId { get; set; }
         public string fileName { get; set; }
+        public List<HttpPostedFileBase> Files { get; set; }
+
+        public ProcedureViewModel()
+        {
+            Files = new List<HttpPostedFileBase>();
+        }
     }
 }
