@@ -24,4 +24,11 @@ namespace Obligatorio2.Models
 
         }
     }
+
+    public class FileUploadImage
+    {
+        public bool guardo { get; set; }
+        public string fileName { get; set; }
+    }
+
 }

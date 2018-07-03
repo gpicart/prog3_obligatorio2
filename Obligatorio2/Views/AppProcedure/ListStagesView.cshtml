@@ -1,0 +1,46 @@
+﻿@model Obligatorio2.ViewModels.ProcedureViewModel
+@{
+    ViewBag.Title = "Lista de Etapas del tramite";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de Etapas del tramite @Html.DisplayFor(model => model.procedure.Code)</h2>
+
+
+
+
+
+<table style="margin-top: 30px;" class="table">
+
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Código</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Accion</th>
+        </tr>
+    </thead>
+    <tbody>
+    
+        @foreach (var item in Model.procedure.Stages)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    <a style="cursor: pointer;" onclick="location.href='@Url.Action("ListOfficialView", "AppProcedure", new { idStage = item.Code, idCase = Model.cases.Id})'">Seleccionar</a>
+                </td>
+            </tr>
+        }
+        
+    </tbody>
+</table>

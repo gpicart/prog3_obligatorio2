@@ -1,0 +1,46 @@
+﻿@model Obligatorio2.ViewModels.ProcedureViewModel
+@{
+    ViewBag.Title = "Lista de funcionarios que pueden realizar el tramite";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de funcionarios que pueden realizar el tramite</h2>
+
+
+
+
+
+<table style="margin-top: 30px;" class="table">
+
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Email</th>
+            <th scope="col">Accion</th>
+        </tr>
+    </thead>
+    <tbody>
+    
+        @foreach (var item in Model.users)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    <a style="cursor: pointer;" onclick="location.href='@Url.Action("UploadImageView", "AppProcedure", new { idStage = Model.stageId, idCase = Model.caseId, idOfficial = item.Id})'">Seleccionar</a>
+                </td>
+            </tr>
+        }
+        
+    </tbody>
+</table>

@@ -272,6 +272,11 @@
     <Content Include="Views\AppProcedure\Index.cshtml" />
     <Content Include="Views\Stage\Index.cshtml" />
     <Content Include="Views\Cases\Search.cshtml" />
+    <Content Include="Views\AppProcedure\SearchCase.cshtml" />
+    <Content Include="Views\AppProcedure\ListStagesView.cshtml" />
+    <Content Include="Views\AppProcedure\ListOfficialView.cshtml" />
+    <Content Include="Views\AppProcedure\UploadImageView.cshtml" />
+    <Content Include="Views\AppProcedure\SaveAll.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />

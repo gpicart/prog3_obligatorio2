@@ -1,0 +1,23 @@
+﻿@model Obligatorio2.ViewModels.ProcedureViewModel
+@{
+    ViewBag.Title = "UploadImageView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Subir imagen</h2>
+
+
+@using (Html.BeginForm ("UploadImageView",  
+                        "AppProcedure",  
+                        FormMethod.Post,  
+                        new { enctype = "multipart/form-data", model = Model }))  
+{                    
+    <label for="file">Subir Imagen:</label>  
+    <input type="file" name="file" id="file"/><br><br>  
+    <input type="submit" value="Upload Image"/>  
+    <br><br>  
+    @ViewBag.Message
+    
+      
+}
+
