@@ -203,18 +203,12 @@ namespace Obligatorio2.Controllers
         }
 
         [HttpPost]
-        public ActionResult UploadImageView(ProcedureViewModel model)
+        public ActionResult UploadImageView(HttpPostedFileBase file, string stageId)
         {
-            var file = model.Files[0];
             if (file != null && file.ContentLength > 0)
                 try
                 {
                     FileUploadImage img = guardarArchivo(file);
-                    var stage = (from s in db.Stage
-                                 where s.Id == model.stageId
-                                 select s).First();
-                    stage.documentName = img.fileName;
-                    db.Entry(stage).State = EntityState.Modified;
                     ViewBag.Message = "File uploaded successfully";
                 }
                 catch (Exception ex)
