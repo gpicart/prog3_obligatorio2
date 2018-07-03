@@ -47,6 +47,10 @@ namespace Obligatorio2.Controllers
 
         public ActionResult SearchCase()
         {
+            if (Session["idUser"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             return View("SearchCase");
         }
         
@@ -76,6 +80,10 @@ namespace Obligatorio2.Controllers
 
         public ActionResult ListStagesView(string idCase)
         {
+            if (Session["idUser"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             try
             {
                 var casId = Convert.ToInt32(idCase);
@@ -101,6 +109,10 @@ namespace Obligatorio2.Controllers
 
         public ActionResult ListOfficialView(string idStage, string idCase)
         {
+            if (Session["idUser"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             try
             {
                 ProcedureViewModel model = new ProcedureViewModel();
@@ -134,6 +146,10 @@ namespace Obligatorio2.Controllers
 
         public ActionResult UploadImageView (string idStage, string idCase, string idOfficial)
         {
+            if (Session["idUser"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             try
             {
                 ProcedureViewModel model = new ProcedureViewModel();
