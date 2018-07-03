@@ -208,8 +208,16 @@ namespace Obligatorio2.Controllers
             if (file != null && file.ContentLength > 0)
                 try
                 {
+                    var staId = Convert.ToInt32(stageId);
                     FileUploadImage img = guardarArchivo(file);
+                    var stage = (from s in db.Stage
+                                 where s.Id == staId
+                                 select s).First();
+                    stage.documentName = img.fileName;
+                    db.Entry(stage).State = EntityState.Modified;
+                    db.SaveChanges();
                     ViewBag.Message = "File uploaded successfully";
+                    return RedirectToAction("Index", "Home");
                 }
                 catch (Exception ex)
                 {
