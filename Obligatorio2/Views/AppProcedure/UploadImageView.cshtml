@@ -10,7 +10,7 @@
 @using (Html.BeginForm ("UploadImageView",  
                         "AppProcedure",  
                         FormMethod.Post,  
-                        new { enctype = "multipart/form-data", model = Model }))  
+                        new { enctype = "multipart/form-data"}))  
 {                    
     <label for="file">Subir Imagen:</label>  
     <input type="file" name="file" id="file"/><br><br>  
