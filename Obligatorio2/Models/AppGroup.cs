@@ -14,6 +14,8 @@ namespace Obligatorio2.Models
         public int Id { get; set; }
         public string Name { get; set; }
 
+        public List<AppProcedure> procedures { get; set; } = new List<AppProcedure>();
+
         public AppGroup()
         {
 

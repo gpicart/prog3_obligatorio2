@@ -33,6 +33,15 @@ namespace Obligatorio2.Controllers
         {
             List<Stage> stages = db.AppProcedure.Find(selectedValue).Stages.ToList();
 
+            List<AppUser> users = new List<AppUser>();
+
+            AppProcedure selectedProcedure = new AppProcedure();
+
+            foreach(AppGroup g in selectedProcedure.Groups)
+            {
+                users.AddRange(db.AppUser.Where(q => q.Group.Id == g.Id).ToList());
+            }
+
             return PartialView("_Stages", stages);
         }
 
