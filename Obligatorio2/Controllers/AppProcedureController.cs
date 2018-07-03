@@ -203,7 +203,7 @@ namespace Obligatorio2.Controllers
         }
 
         [HttpPost]
-        public ActionResult UploadImageView(HttpPostedFileBase file)
+        public ActionResult UploadImageView(HttpPostedFileBase file, string stageId)
         {
             if (file != null && file.ContentLength > 0)
                 try
